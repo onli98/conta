@@ -1,80 +1,49 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>WhatsApp Redirect</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      background-color: #ffffff; /* Fundo branco */
-      color: #333333; /* Texto escuro */
-      font-family: 'Segoe UI', 'Roboto', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
+<script>
+  // Lista de números do WhatsApp
+  const numeros = [
+    '5573991379244',
+    '5573991299778'
+  ];
+
+  // Recupera contador de acessos e índice atual do localStorage
+  let contadorAcessos = parseInt(localStorage.getItem('contadorAcessos')) || 0;
+  let indice = parseInt(localStorage.getItem('indiceNumero')) || 0;
+
+  // Atualiza contador
+  contadorAcessos++;
+
+  // Troca de número a cada 2 acessos
+  if (contadorAcessos >= 2) {
+    contadorAcessos = 0;
+    indice = (indice + 1) % numeros.length;
+  }
+
+  // Salva os valores atualizados
+  localStorage.setItem('contadorAcessos', contadorAcessos);
+  localStorage.setItem('indiceNumero', indice);
+
+  // Mensagem codificada
+  const mensagem = "Ol%C3%A1%2C%20Amor%21%20Como%20tenho%20acesso%20ao%20seu%20conte%C3%BAdo.";
+
+  // Monta o link do WhatsApp com a mensagem
+  const link = "https://wa.me/" + numeros[indice] + "?text=" + mensagem;
+
+  // Cronômetro e redirecionamento
+  let segundos = 3;
+  const contador = document.getElementById('contador');
+  const check = document.getElementById('check');
+
+  const interval = setInterval(() => {
+    segundos--;
+    if (segundos > 0) {
+      contador.textContent = segundos;
+    } else {
+      clearInterval(interval);
+      contador.style.display = 'none';
+      check.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = link;
+      }, 1000);
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .contador {
-      font-size: 3rem;
-      font-weight: bold;
-      color: #4CAF50; /* Verde suave */
-    }
-    .check {
-      font-size: 4rem;
-      color: #4CAF50;
-      display: none;
-    }
-  </style>
-</head>
-<body>
-  <h1>Parabéns pelo acesso!</h1>
-  <p>Você será direcionado em segundos...</p>
-  <div class="contador" id="contador">3</div>
-  <div class="check" id="check">✔</div>
-
-  <script>
-    // Lista de números do WhatsApp
-    const numeros = [
-      '5573991379244',
-      '5573991299778'
-    ];
-
-    // Rotação de números com localStorage
-    let indice = localStorage.getItem('indiceNumero');
-    indice = indice ? parseInt(indice) : 0;
-    const numeroAtual = numeros[indice];
-    const proximoIndice = (indice + 1) % numeros.length;
-    localStorage.setItem('indiceNumero', proximoIndice);
-
-    // Link com número rotativo
-    const link = "https://wa.me/" + numeroAtual;
-
-    // Elementos
-    let segundos = 3;
-    const contador = document.getElementById('contador');
-    const check = document.getElementById('check');
-
-    // Atualiza o cronômetro a cada segundo
-    const interval = setInterval(() => {
-      segundos--;
-      if (segundos > 0) {
-        contador.textContent = segundos;
-      } else {
-        clearInterval(interval);
-        contador.style.display = 'none';
-        check.style.display = 'block';
-        setTimeout(() => {
-          window.location.href = link;
-        }, 1000);
-      }
-    }, 1000);
-  </script>
-</body>
-</html>
+  }, 1000);
+</script>
