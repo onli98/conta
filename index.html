@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>🔥 Oferta Especial</title>
+  <meta charset="UTF-8" />
+  <title>Redirecionando...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1193017659526800'); 
-      fbq('track', 'PageView');       // ✅ Adicionado
-      fbq('track', 'ViewContent');    // ✅ Continua
-    </script>
-    <noscript>
-      <img height="1" width="1" 
+  <!-- Pixel do Facebook -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '1193017659526800'); // Seu ID do pixel
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent');
+    fbq('track', 'Lead');
+  </script>
+
+  <noscript>
+    <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1193017659526800&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
+  </noscript>
 
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f9f9f9; }
-        h1 { color: #e60000; }
-        a.button {
-            background-color: #25D366;
-            color: white;
-            padding: 15px 30px;
-            font-size: 20px;
-            text-decoration: none;
-            border-radius: 8px;
-            display: inline-block;
-            margin-top: 20px;
-        }
-    </style>
+  <style>
+    body {
+      background-color: #fff;
+      color: #333;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .msg {
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
-    <h1>🔥 Oferta Exclusiva para Adultos!</h1>
-    <p>Converse agora no WhatsApp e receba sua oferta privada.</p>
+  <p class="msg">Redirecionando para o WhatsApp...</p>
 
-    <a class="button" href="https://wa.me/5599999999999?text=Quero%20saber%20mais%20sobre%20a%20oferta%20HOT" onclick="fbq('track', 'Lead');">
-        Falar com Atendimento no WhatsApp
-    </a>
+  <script>
+    // Tempo para redirecionar após carregar o pixel
+    setTimeout(function() {
+      const numeroWhats = "5599999999999"; // Troque pelo seu número com DDD
+      const mensagem = "Quero saber mais sobre a oferta HOT";
+      const link = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
+      window.location.href = link;
+    }, 800); // 800ms = rápido, mas dá tempo de carregar o pixel
+  </script>
 </body>
 </html>
