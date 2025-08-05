@@ -16,7 +16,7 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '1193017659526800'); // Seu ID do pixel
+    fbq('init', '1193017659526800'); // Seu Pixel ID
     fbq('track', 'PageView');
     fbq('track', 'ViewContent');
     fbq('track', 'Lead');
@@ -24,7 +24,7 @@
 
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1193017659526800&ev=PageView&noscript=1"/>
+         src="https://www.facebook.com/tr?id=1193017659526800&ev=PageView&noscript=1"/>
   </noscript>
 
   <style>
@@ -41,16 +41,16 @@
   </style>
 </head>
 <body>
-  <p class="msg">Redirecionando para o WhatsApp...</p>
+  <p class="msg">⏳ Aguarde... você será redirecionado para o WhatsApp em 5 minutos.</p>
 
   <script>
-    // Tempo para redirecionar após carregar o pixel
+    // Tempo de espera: 5 minutos (300.000 milissegundos)
     setTimeout(function() {
-      const numeroWhats = "5599999999999"; // Troque pelo seu número com DDD
+      const numeroWhats = "5599999999999"; // TROQUE pelo seu número com DDD
       const mensagem = "Quero saber mais sobre a oferta HOT";
       const link = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
       window.location.href = link;
-    }, 800); // 300.000ms = rápido, mas dá tempo de carregar o pixel
+    }, 300000); // 5 minutos = 300 mil milissegundos
   </script>
 </body>
 </html>
