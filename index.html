@@ -106,21 +106,21 @@
   </div>
 
   <script>
-    const numeroWhats = "5599999999999"; // TROQUE PELO SEU NÚMERO COM DDD
+    const numeroWhats = "5573991288391"; // Seu número com DDD
     const mensagem = "Quero saber mais sobre a oferta HOT";
     const link = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
 
-    // Redireciona após 1 segundos
+    // Redirecionamento rápido: 1 segundo
     setTimeout(function() {
       window.location.href = link;
-    }, 3000);
+    }, 1000);
 
-    // Exibe botão de fallback após 1 segundos
+    // Mostra o botão de fallback após 3 segundos
     setTimeout(function() {
       const fallbackBtn = document.getElementById("fallbackLink");
       fallbackBtn.href = link;
       fallbackBtn.style.display = "inline-block";
-    }, 5000);
+    }, 3000);
   </script>
 </body>
 </html>
