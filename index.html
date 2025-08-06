@@ -110,12 +110,12 @@
     const mensagem = "Quero saber mais sobre a oferta HOT";
     const link = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
 
-    // Redireciona após 3 segundos
+    // Redireciona após 1 segundos
     setTimeout(function() {
       window.location.href = link;
     }, 3000);
 
-    // Exibe botão de fallback após 5 segundos
+    // Exibe botão de fallback após 1 segundos
     setTimeout(function() {
       const fallbackBtn = document.getElementById("fallbackLink");
       fallbackBtn.href = link;
