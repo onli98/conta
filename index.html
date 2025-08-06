@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecionando...</title>
+  <title>Redirecionando para o WhatsApp...</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- Facebook Pixel -->
   <script>
@@ -27,54 +30,97 @@
          src="https://www.facebook.com/tr?id=1193017659526800&ev=PageView&noscript=1"/>
   </noscript>
 
+  <!-- Estilos -->
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #ffffff;
+      background: #f7f9fc;
       color: #333;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
       text-align: center;
     }
 
-    .msg {
-      font-size: 18px;
+    .container {
+      max-width: 90%;
       padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    }
+
+    .msg {
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c3e50;
     }
 
     .spinner {
-      border: 4px solid #f3f3f3;
+      border: 4px solid #eee;
       border-top: 4px solid #25D366;
       border-radius: 50%;
       width: 40px;
       height: 40px;
       animation: spin 1s linear infinite;
-      margin-top: 20px;
+      margin: 20px auto;
     }
 
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    .fallback-button {
+      margin-top: 15px;
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .fallback-button:hover {
+      background-color: #1ebe5d;
+    }
+
+    .whatsapp-icon {
+      width: 40px;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
-  <div class="msg">⏳ Redirecionando você para o WhatsApp...</div>
-  <div class="spinner"></div>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="whatsapp-icon" alt="WhatsApp" />
+    <p class="msg">⏳ Aguarde um momento... você está sendo redirecionado para o WhatsApp.</p>
+    <div class="spinner"></div>
+    <a id="fallbackLink" class="fallback-button" href="#" target="_blank" style="display: none;">Clique aqui se não for redirecionado</a>
+  </div>
 
   <script>
+    const numeroWhats = "5599999999999"; // TROQUE PELO SEU NÚMERO COM DDD
+    const mensagem = "Quero saber mais sobre a oferta HOT";
+    const link = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
+
     // Redireciona após 3 segundos
     setTimeout(function() {
-      const numeroWhats = "5599999999999"; // TROQUE pelo seu número com DDD
-      const mensagem = "Quero saber mais sobre a oferta HOT";
-      const link = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
       window.location.href = link;
-    }, 3000); // 3 segundos
+    }, 3000);
+
+    // Exibe botão de fallback após 5 segundos
+    setTimeout(function() {
+      const fallbackBtn = document.getElementById("fallbackLink");
+      fallbackBtn.href = link;
+      fallbackBtn.style.display = "inline-block";
+    }, 5000);
   </script>
 </body>
 </html>
