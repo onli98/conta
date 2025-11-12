@@ -59,6 +59,7 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/pt_BR/fbevents.js');
+  
   fbq('init', '1751617688871551'); 
   fbq('track', 'PageView');
 </script>
@@ -81,6 +82,13 @@
   function copyCode(){
     navigator.clipboard.writeText(token).then(function(){
       alert('Código copiado. Envie para o operador no WhatsApp.');
+
+      // 🔹 Marca conversão SOMENTE uma vez por sessão
+      if(!sessionStorage.getItem('x1_purchase_sent')){
+        fbq('track', 'Purchase');
+        sessionStorage.setItem('x1_purchase_sent', 'true');
+      }
+
     }, function(){
       alert('Não foi possível copiar. Copie manualmente.');
     });
@@ -101,3 +109,4 @@
   </div>
 </body>
 </html>
+
